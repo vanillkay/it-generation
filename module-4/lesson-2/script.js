@@ -179,19 +179,25 @@ const result = numbers2.reduce((total, element) => {
 
 const result2 = numbers2.reduce((total, element) => total + (element < 0 ? 1 : 0), 0)
 
-console.log(result);
+// console.log(result);
 
 // 10. Реалізувати функцію filterArr для фільтрування масиву за вказаним типом даних.
 
 // Змінна arr - масив, який міститиме будь-які дані, filterType - тип даних.
 // Потрібно створити новий масив, який міститиме всі дані, які були в arr, за винятком тих, тип яких був записаний у змінній filterType.
-// Тобто якщо arr = ['hello', 'world', 23, '23', null], і filterType = 'string', то нови масив має бути таким [23, null].
+// Тобто якщо array = ['hello', 'world', 23, '23', null], і filterType = 'string', то нови масив має бути таким [23, null].
 
-// const arr = ['hello', 'world', 23, '23', null]
+const array = ['hello', 'world', 23, '23', null]
 
 
 // //----------------
 
+const filterArray = (arr, filterType) => { 
+
+    return arr.filter(element => typeof element !== filterType);
+}
+
+// console.log(filterArray(array, 'string'));
 
 // 11. Напишіть функцію getPhoneNumber для пошуку номеру телефона абонента по його імені
 // функція буде приймати аргументом записну книгу ( масив ) та ім'я людини
@@ -199,31 +205,47 @@ console.log(result);
 // 1) Додайте логіку перевірки на наявність телефона у кожному об'єкті в записній книзі.
 // Якщо не у всіх записах є телефон – поверніть помилку
 
-// const phoneBook = [
-//     {
-//         name: 'Mark',
-//         phone: 1234
-//     },
-//     {
-//         name: 'Joe',
-//         phone: 7343,
-//     },
-//     {
-//         name: 'Ann',
-//         phone: 9851,
-//     },
-//     {
-//         name: 'Peter',
-//         phone: 2784
-//     },
-//     {
-//         name: 'Alex',
-//         phone: 5882
-//     },
-//     {
-//        name: 'Lily',
-//     }
-// ]
+const phonesInfo = [
+    {
+        name: 'Mark',
+        phone: 1234
+    },
+    {
+        name: 'Joe',
+        phone: 3141
+    },
+    {
+        name: 'Ann',
+        phone: 2134,
+    },
+    {
+        name: 'Peter',
+        phone: 5324,
+    },
+    {
+        name: 'Alex',
+        phone: 4352
+    },
+]
+
+
+const getPhoneNumber = (phoneBook, userName) => {
+    const isPhonesValid = phoneBook.every(el => el.hasOwnProperty("phone"));
+
+    if (!isPhonesValid) {
+        return 'Не всі юзери з телефонами';
+    }
+
+    const userObj = phoneBook.find(el => el.name === userName);
+
+    if (userObj === undefined){
+        return 'Номер не існує';
+    }
+
+    return userObj.phone;
+}
+
+// console.log(getPhoneNumber(phonesInfo,'Mark'));
 
 
 
@@ -241,20 +263,38 @@ console.log(result);
 }
 */
 
-// function createObject(name, surname, ...rest) {
-//     const props = {};
-//
-//     for (const item of rest) {
-//         const [key, value] = item.split(': ');
-//         props[key] = value;
-//     }
-//
-//     return {
-//         name,
-//         surname,
-//         ...props,
-//     }
-// }
+function createObject(name, surname, ...rest) {
+    const props = {};
+
+    for (const item of rest) {
+        const [key, value] = item.split(': '); // "wife: Анна" = ["wife", "Анна"], "car: Toyota" = ["car", "Toyota"] ...
+        console.log(key)
+        props[key] = value;
+    }
+
+    return {
+        name,
+        surname,
+        ...props,
+    }
+}
+
+
+function createObjectV2(name, surname, ...rest) {
+   return rest.reduce((acc, element)=>{
+        const [key, value] = element.split(': ');
+        return {
+            ...acc, 
+            [key]: value
+        }
+    }, {name, surname})
+}
+
+const user = createObject("Іван", "Іванів", "wife: Анна", "car: Toyota", "position: director");
+const user2 = createObjectV2("Іван", "Іванів", "wife: Анна", "car: Toyota", "position: director");
+
+// console.log("User -> ", user)
+// console.log("User 2 -> ", user2)
 
 //----------------
 
@@ -290,7 +330,6 @@ const countries = [
     {name: 'Benin', code: 'BJ'},
     {name: 'Bermuda', code: 'BM'},
     {name: 'Bhutan', code: 'BT'},
-    {name: 'Bolivia', code: 'BO'},
     {name: 'Bosnia and Herzegovina', code: 'BA'},
     {name: 'Botswana', code: 'BW'},
     {name: 'Bouvet Island', code: 'BV'},
@@ -505,9 +544,21 @@ const countries = [
     {name: 'Western Sahara', code: 'EH'},
     {name: 'Yemen', code: 'YE'},
     {name: 'Zambia', code: 'ZM'},
-    {name: 'Zimbabwe', code: 'ZW'}
+    {name: 'Zimbabwe', code: 'ZW'},
+    {name: 'Bolivia', code: 'BO'},
+
+
 ];
 
+
+const filterAndSortCountries = (countriesArray, searchText) =>{
+   return countriesArray.filter(({name: countryName}) => countryName.toLowerCase()
+   .includes(searchText.toLowerCase()))
+   .map(country => country.name)
+   .sort()
+}
+
+console.log(filterAndSortCountries(countries, 'Vi'))
 
 //----------------
 

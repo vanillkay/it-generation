@@ -12,11 +12,17 @@
 // Спочатку обробників на ній немає.
 // Що буде виведено під час кліку після виконання коду?
 
+
+// button.addEventListener("click",  function() { alert("1"); });
+
+// button.removeEventListener("click",  function() { alert("1"); });
+
+// button.onclick =  function() { alert(2); }
+
 // -----------------
 
 
 // 4. Напишіть функцію removeChildren, яка видаляє всіх нащадків елемента.
-
 
 
 

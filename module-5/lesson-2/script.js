@@ -276,11 +276,11 @@ const vlad = new Employee({ name: 'Vlad', age: 30, salary: 5000 });
 
 
 // const ford = new Car({
-//     currentSpeed: 50, 
-//     year: 2018, 
-//     country: 'USA', 
-//     weight: 2000, 
-//     type: "sedan", 
+//     currentSpeed: 50,
+//     year: 2018,
+//     country: 'USA',
+//     weight: 2000,
+//     type: "sedan",
 //     name: 'Ford',
 //      model: "focus",
 //       wheels: 4 })

@@ -88,7 +88,7 @@ function checkClickKey(classMethod, event){
     symbolEl.forEach(element => {
         if(element.textContent.toUpperCase() === event.key.toUpperCase()){
             if(classMethod in element.classList){
-                element.classList[classMethod]("active")
+                element.classList[classMethod]("active") // classMethod = 'add' || 'remove'
             }
         }
      })

@@ -1,5 +1,6 @@
 import voca from 'voca';
-import throttle from 'lodash.throttle';
+const throttle = require('lodash.throttle');
+
 
 const inputField = document.querySelector('.form__field');
 const buttonsWrap = document.querySelector('.controls');
@@ -70,7 +71,7 @@ buttonsWrap.addEventListener('click', (event) => {
 })
 
 
-function transform(neededCase, value){
+export function transform(neededCase, value){
     switch (neededCase) {
         case 'camel':
             return voca.camelCase(value);
@@ -87,3 +88,7 @@ function transform(neededCase, value){
         default: return "Error, not valid case"
     }
 }
+
+
+
+

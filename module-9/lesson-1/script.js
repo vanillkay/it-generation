@@ -167,3 +167,38 @@ inputedDate.addEventListener('change', readDate);
 //      при натисканні якої цикл продовжується з тієї картинки, яка в даний момент показана на екрані.
 // Розмітку можна змінювати, додавати потрібні класи, ID, атрибути, теги.
 
+// const rootDisplay = document.querySelector('#root');
+// const imgArray = document.querySelectorAll('.image-to-show');
+// const btnStop = document.createElement('button');
+// btnStop.textContent = "stop";
+// const btnRestart = document.createElement('button');
+// btnRestart.textContent = "restart";
+// btnRestart.disabled = true;
+// let intervalID;
+// rootDisplay.append(btnStop, btnRestart);
+// let activeImage = 0;
+// function imageShowing() {
+//     intervalID = setInterval(() => {
+//         imgArray[activeImage].classList.remove('show');
+//         if (activeImage === imgArray.length - 1) {
+//             activeImage = 0;
+//         } else {
+//             activeImage += 1;
+//         }
+//         imgArray[activeImage].classList.add('show');
+//     }, 1000);
+// }
+// btnStop.addEventListener('click', onBTNStop);
+// function onBTNStop() {
+//     clearInterval(intervalID);
+//     btnRestart.disabled = false;
+//     btnStop.disabled = true;
+// }
+// btnRestart.addEventListener('click', onBTNRestart);
+// function onBTNRestart() {
+//     imageShowing();
+//     btnRestart.disabled = true;
+//     btnStop.disabled = false;
+// }
+// imageShowing();
+
